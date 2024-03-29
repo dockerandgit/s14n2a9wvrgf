@@ -7,7 +7,11 @@ WORKDIR /app
 # Copy the source code into the container
 COPY src/ .
 
+# Upgrade Pip and Setuptools
+RUN pip install --upgrade pip setuptools
+
 # Install dependencies
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Specify the command to run the script with the provided files
