@@ -1,26 +1,19 @@
 <Container>
-  <Name>kemono-dl</Name>
-  <Repository>your-repository</Repository>
-  <Registry>https://github.com</Registry>
-  <NetworkType>bridge</NetworkType>
-  <Privileged>false</Privileged>
-  <WebUI>http://[IP]:[PORT]</WebUI>
-  <PostArgs>--cookies "/config/cookie.txt" --from-file "/config/links.txt"</PostArgs>
-  <LaunchCommand></LaunchCommand>
-  <ExtraParams></ExtraParams>
-  <TemplateURL></TemplateURL>
-  <StartPort></StartPort>
-  <Ports></Ports>
-  <Volumes>
-    <Volume>
-      <ContainerDir>/config</ContainerDir>
-      <HostDir>/mnt/user/appdata/kemono-dl</HostDir>
-      <Mode>rw</Mode>
-    </Volume>
-  </Volumes>
-  <Environment></Environment>
-  <Icon></Icon>
-  <WebUIContainer>kemono-dl</WebUIContainer>
-  <UpdatesEnabled>false</UpdatesEnabled>
-  <Branch></Branch>
+    <Name>kemono-dl</Name>
+    <Repository>ghcr.io/ci7lus/kemono-dl</Repository>
+    <Registry>docker.io</Registry>
+    <Network>bridge</Network>
+    <Privileged>false</Privileged>
+    <Support>https://github.com/ci7lus/kemono-dl</Support>
+    <Icon>https://avatars.githubusercontent.com/u/83240512?s=200&v=4</Icon>
+    <ExtraParams>--name kemono-dl -p 8080:8080</ExtraParams>
+    <WebUI>http://[IP]:[PORT]</WebUI>
+    <Config Name="TZ" Target="/etc/TZ">America/New_York</Config>
+    <Config Name="cookies" Target="/config/cookies.txt"></Config>
+    <Config Name="links" Target="/config/links.txt"></Config>
+    <Config Name="download_dir" Target="/downloads"></Config> <!-- New config for download directory -->
+    <LogPath>/config/kemono-dl.log</LogPath>
+    <FileDir>config</FileDir>
+    <Category>Other</Category>
+    <RestartPolicy>always</RestartPolicy>
 </Container>
