@@ -1,26 +1,14 @@
-# Use the official Python image as base
-FROM python:3
+# Use the Python 3.9 image as base
+FROM python:3.9
 
-# Set environment variables to disable path length limit during installation
-ENV PYTHONIOENCODING=utf-8
-ENV PATH_LENGTH=unlimited
-
-# Set the working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
-# Install wget and unzip
-RUN apt-get update && apt-get install -y wget unzip
+# Copy the source code into the container
+COPY src/ .
 
-# Download source code for the latest release and extract it
-RUN wget -O latest.zip https://github.com/your-github-username/your-repository/archive/latest.zip && \
-    unzip latest.zip && \
-    rm latest.zip && \
-    mv your-repository-latest/* . && \
-    rm -r your-repository-latest
-
-# Install dependencies from requirements.txt
-COPY requirements.txt /app/requirements.txt
+# Install dependencies
 RUN pip install -r requirements.txt
 
-# Define the entrypoint command
-CMD ["python", "kemono-dl.py"]
+# Specify the command to run the script with the provided files
+CMD ["python", "kemono-dl.py", "--cookies", "/app/cookies.txt", "--from-file", "/app/links.txt"]
