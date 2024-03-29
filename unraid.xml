@@ -9,9 +9,9 @@
     <ExtraParams>--name kemono-dl -p 8080:8080</ExtraParams>
     <WebUI>http://[IP]:[PORT]</WebUI>
     <Config Name="TZ" Target="/etc/TZ">America/New_York</Config>
-    <Config Name="cookies" Target="/config/cookies.txt"></Config>
-    <Config Name="links" Target="/config/links.txt"></Config>
-    <Config Name="download_dir" Target="/downloads"></Config> <!-- New config for download directory -->
+    <Config Name="cookies" Target="/app/cookies.txt"></Config>
+    <Config Name="links" Target="/app/links.txt"></Config>
+    <Config Name="download_dir" Target="/downloads"></Config>
     <LogPath>/config/kemono-dl.log</LogPath>
     <FileDir>config</FileDir>
     <Category>Other</Category>
