@@ -1,0 +1,26 @@
+<Container>
+  <Name>kemono-dl</Name>
+  <Repository>your-repository</Repository>
+  <Registry>https://github.com</Registry>
+  <NetworkType>bridge</NetworkType>
+  <Privileged>false</Privileged>
+  <WebUI>http://[IP]:[PORT]</WebUI>
+  <PostArgs>--cookies "/config/cookie.txt" --from-file "/config/links.txt"</PostArgs>
+  <LaunchCommand></LaunchCommand>
+  <ExtraParams></ExtraParams>
+  <TemplateURL></TemplateURL>
+  <StartPort></StartPort>
+  <Ports></Ports>
+  <Volumes>
+    <Volume>
+      <ContainerDir>/config</ContainerDir>
+      <HostDir>/mnt/user/appdata/kemono-dl</HostDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Volumes>
+  <Environment></Environment>
+  <Icon></Icon>
+  <WebUIContainer>kemono-dl</WebUIContainer>
+  <UpdatesEnabled>false</UpdatesEnabled>
+  <Branch></Branch>
+</Container>
