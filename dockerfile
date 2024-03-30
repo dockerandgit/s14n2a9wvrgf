@@ -5,7 +5,7 @@ FROM python:3.9
 WORKDIR /app
 
 # Copy the source code into the container
-COPY src/ .
+COPY . .
 
 # Upgrade Pip and Setuptools
 RUN pip install --upgrade pip setuptools
