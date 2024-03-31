@@ -15,4 +15,4 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Specify the command to run the script with the provided files
-CMD ["python", "kemono-dl.py", "--cookies", "/app/cookies.txt", "--from-file", "/app/links.txt"]
+CMD ["python", "kemono-dl.py", "--cookies", "/app/cookies.txt", "--from-file", "/app/links.txt", "--restrict-names", "--filename-pattern", "[{published}] - [{id}] - {title} - {index} - {filename}.{ext}"]
