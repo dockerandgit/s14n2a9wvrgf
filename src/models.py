@@ -1,7 +1,7 @@
 from dataclasses import asdict, dataclass, fields
 from datetime import datetime
 from os.path import splitext
-from typing import List, Optional, Dict
+from typing import List
 
 from .utils import make_path_safe
 
@@ -11,7 +11,7 @@ class ParsedUrl:
     site: str
     service: str
     creator_id: str
-    post_id: Optional[str] = None
+    post_id: str | None = None
 
 
 @dataclass
@@ -22,12 +22,12 @@ class Creator:
     indexed: int
     updated: int
     public_id: str
-    relation_id: Optional[str]
-    post_count: Optional[int]
-    dm_count: Optional[int]
-    share_count: Optional[int]
-    chat_count: Optional[int]
-    has_chats: Optional[bool] = None
+    relation_id: str | None
+    post_count: int | None
+    dm_count: int | None
+    share_count: int | None
+    chat_count: int | None
+    has_chats: bool | None = None
 
 
 @dataclass
@@ -37,11 +37,11 @@ class FavoriteCreator:
     service: str
     indexed: str
     updated: str
-    public_id: Optional[int]
-    relation_id: Optional[int]
+    public_id: int | None
+    relation_id: int | None
     faved_seq: int
     last_imported: str
-    has_chats: Optional[bool] = None
+    has_chats: bool | None = None
 
 
 @dataclass
@@ -56,7 +56,7 @@ class AttachmentPreviews:
 class Attachment:
     name: str
     path: str
-    server: Optional[str]
+    server: str | None
 
 
 @dataclass
@@ -70,12 +70,12 @@ class Post:
     added: datetime
     published: datetime
     edited: datetime
-    poll: Optional[bool]  # no idea what type this is
+    poll: bool | None  # no idea what type this is
 
-    embed: Dict
+    embed: dict
     attachments: List[Attachment]
-    captions: Optional[List[str]]
-    tags: Optional[List[str]]
+    captions: List[str] | None
+    tags: List[str] | None
 
     def __init__(self, post_api: dict) -> None:
         post = post_api.get("post", {})
@@ -198,5 +198,5 @@ class TemplateVaribale:
             val = getattr(self, f.name)
             setattr(self, f.name, make_path_safe(val))
 
-    def toDict(self) -> Dict[str, str]:
+    def toDict(self) -> dict[str, str]:
         return asdict(self)
