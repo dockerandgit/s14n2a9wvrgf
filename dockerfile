@@ -1,4 +1,4 @@
-no# Use the Python 3.10 image as base
+# Use the Python 3.10 image as base
 FROM python:3.10
 
 # Set the working directory in the container
